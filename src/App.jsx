@@ -12,7 +12,9 @@ function App() {
 
   return (
     <>
+    {/* header */}
     <Header/>
+    {/* url */}
     <Routes>
       <Route path='/' element={<Landingpage/>}/>
       <Route path='/resume' element={<ResumeGenerator/>}/>
@@ -20,6 +22,8 @@ function App() {
       <Route path='/history' element={<History/>}/>
       <Route path='/*' element={<PageNotFound/>}/>
     </Routes>
+
+    {/* footer */}
      <Footer/>
     </>
   )
