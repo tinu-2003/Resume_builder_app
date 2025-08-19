@@ -10,9 +10,12 @@ import Button from '@mui/material/Button';
 
 function Preview() {
   return (
-    <div style={{marginTop:'100px'}}>
+    <>
+      <Stack direction={'row'} sx={{marginTop :'20px' , justifyContent:'flex-end'}}>
+<Stack></Stack>
+      </Stack>
  <Box component="section" >
-      <Paper elevation={3} sx={{ p: 5,textAlign:"center" }}>
+      <Paper elevation={3} sx={{ my:5, p: 5,textAlign:"center" }}>
            {/* user personal details */}
            <h2>Name</h2>
            <h5>job Title</h5>
@@ -53,7 +56,7 @@ function Preview() {
 
          </Paper>
     </Box>
-    </div>
+    </>
   )
 }
 

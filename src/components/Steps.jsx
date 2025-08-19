@@ -10,8 +10,40 @@ import TextField from '@mui/material/TextField';
 const steps = ['Basic Information', 'Contact Details', 'Education Details' , 'Work Experince' ,'Skills & Certifications','Review & Submit   '];
 
 function Steps() {
+
+  const skillSuggectionArray=['Node JS','Express','MongoDB','React','Css','Angular','Bootstrap','GIT','javaScript']
    const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+ //state for storing user input data
+const [userInput, setUserInput] = React.useState({
+personelData:{
+name:'',
+job:'',
+location:'',
+email:'',
+phone:'',
+github:'',
+linkedin:'',
+portfolio:''
+},
+education:{
+  course:'',
+  college:'',
+  university:'',
+  year:'',
+},
+experience:{
+  jobRole:'',
+  company:'',
+  jobLocation:'',
+  duration:''
+},
+skills:[],
+summary:''
+})
+
+console.log(userInput);
+
 
     const isStepOptional = (step) => {
     return step === 1;
@@ -64,9 +96,9 @@ const renderStepArrayContent = (stepCount)=>{
         <div>
           <h3>Personal Details</h3>
           <div className="d flex row p-3">
-            <TextField id="standard-basic-name" label="Full-Name" variant="standard" />
-            <TextField id="standard-basic-job" label="Job-title" variant="standard" />
-            <TextField id="standard-basic-location" label="Location" variant="standard"/>
+            <TextField id="standard-basic-name" label="Full-Name" variant="standard"onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,name:e.target.value }})} />
+            <TextField id="standard-basic-job" label="Job-title" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,job:e.target.value }})} />
+            <TextField id="standard-basic-location" label="Location" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,location:e.target.value }})} />
           </div>
         </div>
       )
@@ -74,11 +106,11 @@ const renderStepArrayContent = (stepCount)=>{
         <div>
           <h3>Contact Details</h3>
           <div className="d flex row p-3">
-            <TextField id="standard-basic-email" label="Email" variant="standard" />
-            <TextField id="standard-basic-phone" label="Phone-No" variant="standard" />
-            <TextField id="standard-basic-github" label="GitHub Link" variant="standard"/>
-            <TextField id="standard-basic-github" label="Linkedin Link" variant="standard"/>
-            <TextField id="standard-basic-porttfolio" label="Portfolio Link" variant="standard"/>
+            <TextField id="standard-basic-email" label="Email" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,email:e.target.value }})} />
+            <TextField id="standard-basic-phone" label="Phone-No" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,phone:e.target.value }})}/>
+            <TextField id="standard-basic-github" label="GitHub Link" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,github:e.target.value }})}/>
+            <TextField id="standard-basic-linkedin" label="Linkedin Link" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,linkedin:e.target.value }})}/>
+            <TextField id="standard-basic-porttfolio" label="Portfolio Link" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,portfolio:e.target.value }})}/>
           </div>
         </div>
       )
@@ -108,9 +140,28 @@ const renderStepArrayContent = (stepCount)=>{
       case 4 :return(
         <div>
           <h3>Skills</h3>
-          <div className="d flex row p-3">
-            <TextField id="standard-basic-name" label="Add-Skill" variant="standard" />
+          <div class="d-flex align-items-center justify-content-between p-3">
+            <TextField id="standard-basic-skill" label="Add-Skills" variant="standard" sx={{ width: "500px" }} />
+            <Button variant="text" >Add</Button>
           </div>
+          <h5>Suggestion :</h5>
+          <div className="row my-3">
+            {skillSuggectionArray.map(userSkills => (
+              <div className="col-md-3 col-6 mb-2" key={userSkills}>
+                <Button className="w-100" variant="outlined">
+                  {userSkills}
+                </Button>
+              </div>
+            ))
+            }
+          </div>
+          <h5>Added Skills</h5>
+          <div class="d-flex align-items-center justify-content-between my-3">
+            {/* span tag must me duplicated accounding to the user added skills */}
+            <span className='btn btn-primary d-flex align-items-center justify-content-center'>REACT<button className='btn text-light'>X</button></span>
+   </div>
+
+
         </div>
       )
       case 5 :return(
