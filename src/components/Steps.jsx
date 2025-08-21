@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 
 const steps = ['Basic Information', 'Contact Details', 'Education Details' , 'Work Experince' ,'Skills & Certifications','Review & Submit   '];
 
-function Steps() {
+function Steps({}) {
 
   const skillSuggectionArray=['Node JS','Express','MongoDB','React','Css','Angular','Bootstrap','GIT','javaScript']
    const [activeStep, setActiveStep] = React.useState(0);
@@ -18,7 +18,7 @@ function Steps() {
 const [userInput, setUserInput] = React.useState({
 personelData:{
 name:'',
-job:'',
+jobTitle:'',
 location:'',
 email:'',
 phone:'',
@@ -28,7 +28,7 @@ portfolio:''
 },
 education:{
   course:'',
-  college:'',
+  collage:'',
   university:'',
   year:'',
 },
@@ -41,8 +41,9 @@ experience:{
 skills:[],
 summary:''
 })
-
 console.log(userInput);
+
+// const userSkillRef = React.
 
 
     const isStepOptional = (step) => {
@@ -87,6 +88,17 @@ console.log(userInput);
     setActiveStep(0);
   };
 
+  const addSkill =(inputSkill)=>{
+    if(inputSkill){
+if(userInput.skills.includes(inputSkill)){
+      alert("inputed skill is already existing !! add another..")
+    }
+    else{
+ userInput.skills.push(inputSkill)
+    }
+  }
+    }
+    
 // rednder the content corresponding to array index
     
 const renderStepArrayContent = (stepCount)=>{
@@ -96,9 +108,9 @@ const renderStepArrayContent = (stepCount)=>{
         <div>
           <h3>Personal Details</h3>
           <div className="d flex row p-3">
-            <TextField id="standard-basic-name" label="Full-Name" variant="standard"onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,name:e.target.value }})} />
-            <TextField id="standard-basic-job" label="Job-title" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,job:e.target.value }})} />
-            <TextField id="standard-basic-location" label="Location" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,location:e.target.value }})} />
+            <TextField id="standard-basic-name" label="Full-Name" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,name:e.target.value}})} />
+            <TextField id="standard-basic-job" label="Job-title" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,jobTitle:e.target.value}})}/>
+            <TextField id="standard-basic-location" label="Location" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,location:e.target.value}})}/>
           </div>
         </div>
       )
@@ -106,11 +118,11 @@ const renderStepArrayContent = (stepCount)=>{
         <div>
           <h3>Contact Details</h3>
           <div className="d flex row p-3">
-            <TextField id="standard-basic-email" label="Email" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,email:e.target.value }})} />
-            <TextField id="standard-basic-phone" label="Phone-No" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,phone:e.target.value }})}/>
-            <TextField id="standard-basic-github" label="GitHub Link" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,github:e.target.value }})}/>
-            <TextField id="standard-basic-linkedin" label="Linkedin Link" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,linkedin:e.target.value }})}/>
-            <TextField id="standard-basic-porttfolio" label="Portfolio Link" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,portfolio:e.target.value }})}/>
+            <TextField id="standard-basic-email" label="Email" variant="standard"onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,email:e.target.value}})} />
+            <TextField id="standard-basic-phone" label="Phone-No" variant="standard"onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,phone:e.target.value}})} />
+            <TextField id="standard-basic-github" label="GitHub Link" variant="standard"onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,github:e.target.value}})} />
+            <TextField id="standard-basic-linkedin" label="Linkedin Link" variant="standard"onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,linkedin:e.target.value}})} />
+            <TextField id="standard-basic-porttfolio" label="Portfolio Link" variant="standard" onChange={e=>setUserInput({...userInput,personelData:{...userInput.personelData,portfolio:e.target.value}})} />
           </div>
         </div>
       )
@@ -119,10 +131,10 @@ const renderStepArrayContent = (stepCount)=>{
         <div>
           <h3>Education Details</h3>
           <div className="d flex row p-3">
-            <TextField id="standard-basic-course" label="Cours-Name" variant="standard" />
-            <TextField id="standard-basic-collage" label="Collage-Name" variant="standard" />
-            <TextField id="standard-basic-university" label="University-Name" variant="standard" />
-            <TextField id="standard-basic-passingout" label="Year of Passing-Out" variant="standard"/>
+            <TextField id="standard-basic-course" label="Cours-Name" variant="standard"onChange={e=>setUserInput({...userInput,education:{...userInput.education,course:e.target.value}})}  />
+            <TextField id="standard-basic-collage" label="Collage-Name" variant="standard"onChange={e=>setUserInput({...userInput,education:{...userInput.education,collage:e.target.value}})}  />
+            <TextField id="standard-basic-university" label="University-Name" variant="standard"onChange={e=>setUserInput({...userInput,education:{...userInput.education,university:e.target.value}})}  />
+            <TextField id="standard-basic-passingout" label="Year of Passing-Out" variant="standard" onChange={e=>setUserInput({...userInput,education:{...userInput.education,year:e.target.value}})} />
           </div>
         </div>
       )
@@ -130,10 +142,10 @@ const renderStepArrayContent = (stepCount)=>{
         <div>
           <h3>Professional  Details</h3>
           <div className="d flex row p-3">
-            <TextField id="standard-basic-role" label="Job Or Internship" variant="standard" />
-            <TextField id="standard-basic-company" label="Company-name" variant="standard" />
-            <TextField id="standard-basic-company-location" label="Company-Location" variant="standard"/>
-            <TextField id="standard-basic-duration" label="Duration" variant="standard"/>
+            <TextField id="standard-basic-role" label="Job Or Internship" variant="standard"onChange={e=>setUserInput({...userInput,experience:{...userInput.experience,jobRole:e.target.value}})} />
+            <TextField id="standard-basic-company" label="Company-name" variant="standard" onChange={e=>setUserInput({...userInput,experience:{...userInput.experience,company:e.target.value}})} />
+            <TextField id="standard-basic-company-location" label="Company-Location" variant="standard" onChange={e=>setUserInput({...userInput,experience:{...userInput.experience,jobLocation:e.target.value}})}/>
+            <TextField id="standard-basic-duration" label="Duration" variant="standard"onChange={e=>setUserInput({...userInput,experience:{...userInput.experience,duration:e.target.value}})}/>
           </div>
         </div>
       )
@@ -141,7 +153,8 @@ const renderStepArrayContent = (stepCount)=>{
         <div>
           <h3>Skills</h3>
           <div class="d-flex align-items-center justify-content-between p-3">
-            <TextField id="standard-basic-skill" label="Add-Skills" variant="standard" sx={{ width: "500px" }} />
+            {/* <TextField id="standard-basic-skill" label="Add-Skills" variant="standard" sx={{ width: "500px" }} /> */}
+            <input  type="text" className='form-control' placeholder='Add skills' />
             <Button variant="text" >Add</Button>
           </div>
           <h5>Suggestion :</h5>
@@ -169,7 +182,7 @@ const renderStepArrayContent = (stepCount)=>{
           <h3>Personal Summary</h3>
           <div className="d flex row p-3">
             <TextField id="standard-basic-summary" label="Write a short summary of yourself" variant="standard" multiline rows={4}
-            defaultValue={"Enthusiastic and motivated recent graduate with a strong foundation in [your field, e.g., Computer Science / Data Analytics / Cybersecurity]. Skilled in [list 2–3 key skills, e.g., data analysis, programming, and problem-solving] with hands-on experience through academic projects, internships, and self-learning. Eager to apply theoretical knowledge to real-world challenges, contribute to team success, and grow within a dynamic and forward-thinking organization."}/>
+            defaultValue={"Enthusiastic and motivated recent graduate with a strong foundation in [your field, e.g., Computer Science / Data Analytics / Cybersecurity]. Skilled in [list 2–3 key skills, e.g., data analysis, programming, and problem-solving] with hands-on experience through academic projects, internships, and self-learning. Eager to apply theoretical knowledge to real-world challenges, contribute to team success, and grow within a dynamic and forward-thinking organization."} onChange={e=>setUserInput({...userInput,summary:e.target.value})}/>
           </div>
         </div>
       )

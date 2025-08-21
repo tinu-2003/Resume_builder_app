@@ -5,20 +5,31 @@ const Landingpage = () => {
   return (
     <>
     {/* first section */}
-      <section style={{ width: '100%', overflowx: 'hidden', height: '450px', backgroundImage: "url('https://www.cpasitesolutions.com/cpa-websites/wp-content/uploads/2024/06/local-seo-for-bookeepers-1.png')", backgroundAttachment: 'fixed', backgroundSize: 'cover' }} id='part_one'>
-        <div className="row pt-5">
-          <div className="col-12 col-md-4"></div>
-          <div className="col-12 col-md-4 shadow border py-5 rounded mt-5 text-center "
-            style={{ backgroundColor: "rgb(225,225,225,0.5)" }}>
-            <h4>Designed to get hired</h4>
-            <h6>Your skills, your story, your next job — all in one.</h6>
-            <Link to="/resume">
-              <button className='btn btn-primary'>Make your resume</button>
-            </Link>
-          </div>
-          <div className="col-12 col-md-4"></div>
-        </div>
-      </section>
+<section
+  className="container-fluid d-flex justify-content-center align-items-center"
+  style={{
+    width: "100%",
+    height: "100vh",
+    overflowX: "hidden",
+    backgroundImage:
+      "url('https://www.cpasitesolutions.com/cpa-websites/wp-content/uploads/2024/06/local-seo-for-bookeepers-1.png')",
+    backgroundAttachment: "fixed",
+    backgroundPosition: "top",
+    backgroundSize: "cover",
+  }}
+  id="part_one"
+>
+  <div
+    className="shadow border py-5 px-4 rounded text-center"
+    style={{ backgroundColor: "rgba(225,225,225,0.5)" }}
+  >
+    <h4>Designed to get hired</h4>
+    <h6>Your skills, your story, your next job — all in one.</h6>
+    <Link to="/resume">
+      <button className="btn btn-primary">Make your resume</button>
+    </Link>
+  </div>
+</section>
       {/* Tool Section */}
       <section className="tools p-5 text-center">
         <h1>Tools</h1>
